@@ -3,11 +3,17 @@ package io.pivotal.pal.tracker.registration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 import java.util.TimeZone;
 
 
 @SpringBootApplication
+@EnableWebSecurity
+@EnableResourceServer
+@EnableOAuth2Client
 @ComponentScan({
     "io.pivotal.pal.tracker.accounts",
     "io.pivotal.pal.tracker.restsupport",
