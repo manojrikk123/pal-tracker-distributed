@@ -1,6 +1,8 @@
 package io.pivotal.pal.tracker.allocations;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -12,6 +14,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.web.client.RestOperations;
 
+import java.util.Map;
+import java.util.Set;
 import java.util.TimeZone;
 
 
@@ -26,6 +30,12 @@ public class App {
 
     public static void main(String[] args) {
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+        Map<String, String> env = System.getenv();
+        System.out.println("================================================================");
+        System.out.println(" " + env.containsKey("APPLICATION_OAUTH_ENABLED"));
+        System.out.println(" " + env.get("APPLICATION_OAUTH_ENABLED"));
+        System.out.println("================================================================");
+
         SpringApplication.run(App.class, args);
     }
 

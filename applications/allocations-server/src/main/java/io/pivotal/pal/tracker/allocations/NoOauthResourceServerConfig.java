@@ -6,11 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-@ConditionalOnProperty(value = "application.oauth-enabled", havingValue = "false")
+@Component
+@ConditionalOnProperty(name = "application.oauth-enabled", havingValue = "false")
 public class NoOauthResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
