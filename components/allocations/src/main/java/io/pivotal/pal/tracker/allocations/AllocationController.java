@@ -31,8 +31,12 @@ public class AllocationController {
     public ResponseEntity<AllocationInfo> create(@RequestBody AllocationForm form) {
 
         if (projectIsActive(form.projectId)) {
+            System.out.println("Allocations project active");
             AllocationRecord record = gateway.create(formToFields(form));
+            System.out.println("Record value ==> " + record.projectId);
             return new ResponseEntity<>(present(record), HttpStatus.CREATED);
+        } else{
+            System.out.println("Allocations project not active");
         }
 
         return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
